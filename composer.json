@@ -1,0 +1,21 @@
+{
+    "name": "darkgigabyte/rollout",
+    "description": "A php implementation of the ruby feature flipper originally from jamesgolick/rollout (now fetlife/rollout)",
+    "keywords": ["feature", "rollout", "flipper"],
+    "homepage": "https://github.com/DarkGigaByte/rollout",
+    "autoload": {
+        "psr-0": { "": "src/" }
+    },
+    "require": {
+        "php": ">=5.3"
+    },
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Pascal Schneider",
+            "email": "darkgigabyte@googlemail.com",
+            "homepage": "https://github.com/DarkGigaByte",
+            "role": "developer"
+        }
+    ]
+}
