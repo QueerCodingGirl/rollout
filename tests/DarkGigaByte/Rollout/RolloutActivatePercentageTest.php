@@ -5,7 +5,7 @@ class RolloutActivatePercentageTest extends \PHPUnit_Framework_TestCase {
 
     /**
      * @dataProvider activatePercentageProvider
-     * @covers DarkGigaByte\Rollout\RolloutAbstractTest::activatePercentage
+     * @covers DarkGigaByte\Rollout\RolloutAbstract::activatePercentage
      */
     public function testActivatePercentage($percentage)
     {

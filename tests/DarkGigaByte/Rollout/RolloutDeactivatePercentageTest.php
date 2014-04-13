@@ -3,7 +3,7 @@
 class RolloutDeactivatePercentageTest extends \PHPUnit_Framework_TestCase {
 
     /**
-     * @covers DarkGigaByte\Rollout\RolloutAbstractTest::deactivatePercentage
+     * @covers DarkGigaByte\Rollout\RolloutAbstract::deactivatePercentage
      */
     public function testDeactivatePercentage()
     {
