@@ -9,6 +9,9 @@
     "require": {
         "php": ">=5.3"
     },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    },
     "license": "Apache-2.0",
     "authors": [
         {
