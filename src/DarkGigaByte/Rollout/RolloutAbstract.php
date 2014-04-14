@@ -4,7 +4,6 @@ namespace DarkGigaByte\Rollout;
 
 
 use DarkGigaByte\Rollout\Feature\FeatureFactoryAbstract;
-use DarkGigaByte\Rollout\Feature\FeatureAbstract;
 use DarkGigaByte\Rollout\Interfaces\DeterminableUserInterface;
 use DarkGigaByte\Rollout\Interfaces\KeyValueStorageInterface;
 use DarkGigaByte\Rollout\Interfaces\RolloutableInterface;
@@ -26,8 +25,8 @@ abstract class RolloutAbstract
     protected $featureFactory;
 
     /**
-     * @param $featureName
-     * @return FeatureAbstract
+     * @param string $featureName
+     * @return RolloutableInterface
      */
     public function getFeature($featureName)
     {
@@ -66,7 +65,7 @@ abstract class RolloutAbstract
 
     /**
      * Get the storage key for a feature name
-     * @param $featureName
+     * @param string $featureName
      * @return string
      */
     protected function getKey($featureName)
@@ -85,7 +84,7 @@ abstract class RolloutAbstract
 
     /**
      * Activates a feature (for everyone)
-     * @param $featureName
+     * @param string $featureName
      */
     public function activate($featureName)
     {
@@ -96,7 +95,7 @@ abstract class RolloutAbstract
 
     /**
      * Deactivates a feature (for everyone)
-     * @param $featureName
+     * @param string $featureName
      */
     public function deactivate($featureName)
     {
@@ -107,8 +106,8 @@ abstract class RolloutAbstract
 
     /**
      * Activates a feature for a specific role
-     * @param $featureName
-     * @param $roleName
+     * @param string $featureName
+     * @param string $roleName
      */
     public function activateRole($featureName, $roleName)
     {
@@ -119,8 +118,8 @@ abstract class RolloutAbstract
 
     /**
      * Deactivates a feature for a specific role.
-     * @param $featureName
-     * @param $roleName
+     * @param string $featureName
+     * @param string $roleName
      */
     public function deactivateRole($featureName, $roleName)
     {
@@ -131,8 +130,8 @@ abstract class RolloutAbstract
 
     /**
      * Activates a feature for a specific group
-     * @param $featureName
-     * @param $groupName
+     * @param string $featureName
+     * @param string $groupName
      */
     public function activateGroup($featureName, $groupName)
     {
@@ -143,8 +142,8 @@ abstract class RolloutAbstract
 
     /**
      * Deactivates a feature for a specific group.
-     * @param $featureName
-     * @param $groupName
+     * @param string $featureName
+     * @param string $groupName
      */
     public function deactivateGroup($featureName, $groupName)
     {
@@ -155,8 +154,8 @@ abstract class RolloutAbstract
 
     /**
      * Activates a feature for a specific user
-     * @param $featureName
-     * @param $userId
+     * @param string $featureName
+     * @param integer $userId
      */
     public function activateUser($featureName, $userId)
     {
@@ -167,8 +166,8 @@ abstract class RolloutAbstract
 
     /**
      * Deactivates a feature for a specific user
-     * @param $featureName
-     * @param $userId
+     * @param string $featureName
+     * @param integer $userId
      */
     public function deactivateUser($featureName, $userId)
     {
@@ -179,8 +178,8 @@ abstract class RolloutAbstract
 
     /**
      * Activates a feature for a percentage of users
-     * @param $featureName
-     * @param $percentage
+     * @param string $featureName
+     * @param integer $percentage
      */
     public function activatePercentage($featureName, $percentage)
     {
@@ -191,7 +190,7 @@ abstract class RolloutAbstract
 
     /**
      * Deactivates the percentage activation for a feature
-     * @param $featureName
+     * @param string $featureName
      */
     public function deactivatePercentage($featureName)
     {
@@ -202,7 +201,7 @@ abstract class RolloutAbstract
 
     /**
      * Checks if a feature is active
-     * @param $featureName
+     * @param string $featureName
      * @param DeterminableUserInterface $user
      * @return bool
      */
@@ -214,7 +213,7 @@ abstract class RolloutAbstract
 
     /**
      * Checks if a user has the given role
-     * @param $roleName
+     * @param string $roleName
      * @param DeterminableUserInterface $user
      * @return bool
      */
@@ -229,7 +228,7 @@ abstract class RolloutAbstract
 
     /**
      * Checks if a user has the given group
-     * @param $groupName
+     * @param string $groupName
      * @param DeterminableUserInterface $user
      * @return bool
      */
@@ -242,4 +241,4 @@ abstract class RolloutAbstract
         return $userHasGroup;
     }
 
-} 
+}

@@ -12,7 +12,8 @@ namespace DarkGigaByte\Rollout\Interfaces;
  * Interface KeyValueStorageInterface
  * @package DarkGigaByte\Rollout\Interfaces
  */
-interface KeyValueStorageInterface {
+interface KeyValueStorageInterface
+{
 
     /**
      * @param $key
@@ -26,4 +27,5 @@ interface KeyValueStorageInterface {
      * @return string|null
      */
     public function set($key, $value);
-} 
+
+}

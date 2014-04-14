@@ -7,7 +7,8 @@ use DarkGigaByte\Rollout\RolloutAbstract;
  * Interface RolloutableInterface
  * @package DarkGigaByte\Rollout\Interfaces
  */
-interface RolloutableInterface {
+interface RolloutableInterface
+{
 
     /**
      * Configure the feature with a single string
@@ -21,7 +22,7 @@ interface RolloutableInterface {
      * e.g. "20||ROLE_PREMIUM" is valid (20 percent and additionally al users with ROLE_PREMIUM will get the feature)
      * e.g. "|||" is valid and will completely disable this feature, but it is recommend to use "0|||" instead.
      *
-     * @param $configString
+     * @param string $configString
      * @return bool Successfully parsed the string or not
      */
     public function configureByConfigString($configString);
@@ -144,4 +145,5 @@ interface RolloutableInterface {
      * @return string
      */
     public function __toString();
-} 
+
+}

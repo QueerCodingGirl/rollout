@@ -12,14 +12,13 @@ use DarkGigaByte\Rollout\Interfaces\RolloutableInterface;
 class FeatureFactory extends FeatureFactoryAbstract
 {
     /**
-     * @param $featureName
+     * @param string $featureName
      * @param string|null $featureConfigString
-     * @return \DarkGigaByte\Rollout\Interfaces\RolloutableInterface
+     * @return RolloutableInterface
      */
     public function getFeature($featureName, $featureConfigString = null)
     {
         return new CoreFeature($featureName, $featureConfigString);
     }
 
-
-} 
+}

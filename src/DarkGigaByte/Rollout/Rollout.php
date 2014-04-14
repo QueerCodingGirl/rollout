@@ -8,7 +8,8 @@ use DarkGigaByte\Rollout\Interfaces\KeyValueStorageInterface;
  * Class Rollout
  * @package DarkGigaByte\Rollout
  */
-class Rollout extends RolloutAbstract {
+class Rollout extends RolloutAbstract
+{
 
     /**
      * @param KeyValueStorageInterface $storage
@@ -19,4 +20,5 @@ class Rollout extends RolloutAbstract {
         $this->storage = $storage;
         $this->featureFactory = $featureFactory;
     }
-} 
+
+}

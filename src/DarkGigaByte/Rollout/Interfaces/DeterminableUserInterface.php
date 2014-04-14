@@ -6,7 +6,8 @@ namespace DarkGigaByte\Rollout\Interfaces;
  * Interface DeterminableUserInterface
  * @package DarkGigaByte\Rollout\Interfaces
  */
-interface DeterminableUserInterface {
+interface DeterminableUserInterface
+{
 
     /**
      * Returns the user identifier (which must be an integer)
@@ -25,4 +26,5 @@ interface DeterminableUserInterface {
      * @return string[]
      */
     public function getGroups();
-} 
+
+}
