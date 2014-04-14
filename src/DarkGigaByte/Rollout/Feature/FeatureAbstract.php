@@ -72,9 +72,9 @@ abstract class FeatureAbstract implements RolloutableInterface
             );
 
             if (true === is_numeric($percentageString)) {
-                $this->setPercentage((int)$percentageString);
+                $this->setPercentage((integer) $percentageString);
             } else {
-                $this->setPercentage(0);
+                $this->setPercentage((integer) 0);
             }
 
             if (true === is_string($usersString) && '' !== $usersString) {
@@ -110,7 +110,7 @@ abstract class FeatureAbstract implements RolloutableInterface
      */
     public function clearConfig()
     {
-        $this->setPercentage(0);
+        $this->setPercentage((integer) 0);
         $this->setUsers(array());
         $this->setRoles(array());
         $this->setGroups(array());
