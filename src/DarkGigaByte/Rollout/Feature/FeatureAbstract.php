@@ -244,12 +244,12 @@ abstract class FeatureAbstract implements RolloutableInterface
 
     /**
      * Set the percentage of users that should be enabled
-     * @param integer
+     * @param integer $percentage
      * @return RolloutableInterface $this
      */
-    public function setPercentage($integer)
+    public function setPercentage($percentage)
     {
-        $this->percentage = (int)$integer;
+        $this->percentage = (integer) $percentage;
         return $this;
     }
 
