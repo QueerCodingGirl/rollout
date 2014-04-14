@@ -129,17 +129,16 @@ abstract class FeatureAbstract implements RolloutableInterface
     {
         $isActive = false;
 
-        if (null === $user) {
-            $userId = null;
-        } else {
+        if ($user instanceof DeterminableUserInterface) {
             $userId = $user->getId();
+        } else {
+            $userId = null;
         }
 
         if (100 === $this->getPercentage()) {
             $isActive = true;
         } elseif (true === is_numeric($userId)) {
-            if (
-                true === $this->isUserInPercentage($userId)
+            if (true === $this->isUserInPercentage($userId)
                 || true === $this->isUserInActiveUsers($userId)
                 || true === $this->isUserInActiveRole($user, $rollout)
                 || true === $this->isUserInActiveGroup($user, $rollout)
