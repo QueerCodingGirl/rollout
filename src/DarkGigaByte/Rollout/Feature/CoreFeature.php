@@ -21,5 +21,4 @@ class CoreFeature extends FeatureAbstract
             $this->configureByConfigString($configString);
         }
     }
-
 }

@@ -145,5 +145,4 @@ interface RolloutableInterface
      * @return string
      */
     public function __toString();
-
 }

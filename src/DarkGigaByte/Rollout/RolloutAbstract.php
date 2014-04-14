@@ -240,5 +240,4 @@ abstract class RolloutAbstract
         }
         return $userHasGroup;
     }
-
 }

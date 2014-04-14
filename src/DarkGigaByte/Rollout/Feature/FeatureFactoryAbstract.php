@@ -17,5 +17,4 @@ abstract class FeatureFactoryAbstract {
      * @return RolloutableInterface
      */
     abstract public function getFeature($featureName, $featureConfigString = null);
-
 } 

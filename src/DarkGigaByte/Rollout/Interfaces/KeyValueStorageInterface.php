@@ -27,5 +27,4 @@ interface KeyValueStorageInterface
      * @return string|null
      */
     public function set($key, $value);
-
 }

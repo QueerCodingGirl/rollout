@@ -26,5 +26,4 @@ interface DeterminableUserInterface
      * @return string[]
      */
     public function getGroups();
-
 }

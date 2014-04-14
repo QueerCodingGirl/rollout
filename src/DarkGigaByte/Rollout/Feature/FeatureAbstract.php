@@ -433,5 +433,4 @@ abstract class FeatureAbstract implements RolloutableInterface
             . implode(self::FEATURE_CONFIGSTRING_ENTRY_DELIMITER, $this->getGroups())
         ;
     }
-
-} 
+}

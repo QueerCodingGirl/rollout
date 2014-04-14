@@ -20,5 +20,4 @@ class FeatureFactory extends FeatureFactoryAbstract
     {
         return new CoreFeature($featureName, $featureConfigString);
     }
-
 }

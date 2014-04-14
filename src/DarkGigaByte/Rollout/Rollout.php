@@ -20,5 +20,4 @@ class Rollout extends RolloutAbstract
         $this->storage = $storage;
         $this->featureFactory = $featureFactory;
     }
-
 }
