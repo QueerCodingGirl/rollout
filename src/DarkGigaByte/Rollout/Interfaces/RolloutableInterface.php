@@ -66,7 +66,7 @@ interface RolloutableInterface {
 
     /**
      * Set the percentage of users that should be enabled
-     * @param $integer
+     * @param integer
      * @return RolloutableInterface $this
      */
     public function setPercentage($integer);

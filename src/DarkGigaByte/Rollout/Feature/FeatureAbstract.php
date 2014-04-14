@@ -61,8 +61,7 @@ abstract class FeatureAbstract implements RolloutableInterface
      */
     public function configureByConfigString($configString)
     {
-        if (
-            true === is_string($configString)
+        if (true === is_string($configString)
             && '' !== $configString
             && 4 === mb_substr_count($configString, self::FEATURE_CONFIGSTRING_SECTION_DELIMITER)
         ) {
@@ -163,7 +162,8 @@ abstract class FeatureAbstract implements RolloutableInterface
      * @param $userId
      * @return bool
      */
-    protected function isUserInActiveUsers($userId) {
+    protected function isUserInActiveUsers($userId)
+    {
         return in_array($userId, $this->getUsers());
     }
 
