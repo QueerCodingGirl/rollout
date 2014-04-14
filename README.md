@@ -9,3 +9,12 @@ Installation via composer
 
     composer require DarkGigaByte/rollout
 
+
+Next TODO
+---------
+- add more tests (much more!)
+- add manual/instructions on how-to use rollout
+
+Special Thanks to
+--------------
+- [teemitzitrone](https://github.com/teemitzitrone) for code review and first tests
