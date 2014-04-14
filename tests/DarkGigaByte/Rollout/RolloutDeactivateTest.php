@@ -1,22 +1,20 @@
 <?php
 
-class RolloutActivatePercentageTest extends \PHPUnit_Framework_TestCase {
-
+class RolloutDeactivateTest extends \PHPUnit_Framework_TestCase {
 
     /**
-     * @dataProvider activatePercentageProvider
-     * @covers DarkGigaByte\Rollout\RolloutAbstractTest::activatePercentage
+     * @covers DarkGigaByte\Rollout\RolloutAbstract::deactivate
      */
-    public function testActivatePercentage($percentage)
+    public function testDeactivate()
     {
         $feature = $this->getMockBuilder('\DarkGigaByte\Rollout\Feature\CoreFeature')
             ->disableOriginalConstructor()
-            ->setMethods(array('setPercentage'))
+            ->setMethods(array('clearConfig'))
             ->getMock();
 
         $feature->expects($this->once())
-            ->method('setPercentage')
-            ->with($this->equalTo($percentage));
+            ->method('clearConfig')
+            ->will($this->returnValue($feature));
 
         $rollout = $this->getMockBuilder('\DarkGigaByte\Rollout\Rollout')
             ->disableOriginalConstructor()
@@ -32,17 +30,8 @@ class RolloutActivatePercentageTest extends \PHPUnit_Framework_TestCase {
             ->method('saveFeature')
             ->with($this->equalTo($feature));
 
-        $rollout->activatePercentage('test', $percentage);
+        $rollout->deactivate('test');
     }
 
-    public function activatePercentageProvider()
-    {
-        return array(
-            array(40),
-            array(50),
-            array(1),
-            array(0)
-        );
-    }
 }
  
