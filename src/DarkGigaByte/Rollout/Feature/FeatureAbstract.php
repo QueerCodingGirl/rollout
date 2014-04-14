@@ -128,7 +128,13 @@ abstract class FeatureAbstract implements RolloutableInterface
     public function isActive(RolloutAbstract $rollout, DeterminableUserInterface $user = null)
     {
         $isActive = false;
-        $userId = (null === $user) ? null : $user->getId();
+
+        if (null === $user) {
+            $userId = null;
+        } else {
+            $userId = $user->getId();
+        }
+
         if (100 === $this->getPercentage()) {
             $isActive = true;
         } elseif (true === is_numeric($userId)) {
