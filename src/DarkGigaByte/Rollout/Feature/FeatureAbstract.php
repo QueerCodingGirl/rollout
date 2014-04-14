@@ -56,7 +56,7 @@ abstract class FeatureAbstract implements RolloutableInterface
      * e.g. "20||ROLE_PREMIUM|" is valid (20 percent and additionally al users with ROLE_PREMIUM will get the feature)
      * e.g. "||||" is valid and will completely disable this feature, but it is recommend to use "0||||" instead.
      *
-     * @param $configString
+     * @param string $configString
      * @return bool Successfully parsed the string or not
      */
     public function configureByConfigString($configString)
@@ -149,7 +149,7 @@ abstract class FeatureAbstract implements RolloutableInterface
     }
 
     /**
-     * @param $userId
+     * @param integer $userId
      * @return bool
      */
     protected function isUserInPercentage($userId)
@@ -159,7 +159,7 @@ abstract class FeatureAbstract implements RolloutableInterface
     }
 
     /**
-     * @param $userId
+     * @param integer $userId
      * @return bool
      */
     protected function isUserInActiveUsers($userId)
