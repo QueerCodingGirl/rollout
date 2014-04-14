@@ -1,6 +1,7 @@
 <?php
 
 namespace DarkGigaByte\Rollout\Interfaces;
+
 use DarkGigaByte\Rollout\RolloutAbstract;
 
 /**

@@ -9,7 +9,8 @@ use DarkGigaByte\Rollout\Interfaces\RolloutableInterface;
  * Class FeatureFactoryAbstract
  * @package DarkGigaByte\Rollout\Feature
  */
-abstract class FeatureFactoryAbstract {
+abstract class FeatureFactoryAbstract
+{
 
     /**
      * @param $featureName
@@ -17,4 +18,4 @@ abstract class FeatureFactoryAbstract {
      * @return RolloutableInterface
      */
     abstract public function getFeature($featureName, $featureConfigString = null);
-} 
+}

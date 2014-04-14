@@ -1,6 +1,7 @@
 <?php
 
 namespace DarkGigaByte\Rollout;
+
 use DarkGigaByte\Rollout\Feature\FeatureFactoryAbstract;
 use DarkGigaByte\Rollout\Interfaces\KeyValueStorageInterface;
 
