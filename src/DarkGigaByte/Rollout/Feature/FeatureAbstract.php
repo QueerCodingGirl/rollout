@@ -39,16 +39,22 @@ abstract class FeatureAbstract implements RolloutableInterface
     protected $roles = array();
 
     /**
+     * @var string[]
+     */
+    protected $groups = array();
+
+    /**
      * Configure the feature with a single string
      *
-     * Format of config string should be: "100|1,2,3,4|ROLE_ADMIN,ROLE_PREMIUM"
+     * Format of config string should be: "100|1,2,3,4|ROLE_ADMIN,ROLE_PREMIUM|caretaker,supporter,staff"
      * - where "100" is the percentage of user for that the feature should be enabled.
      * - where "1,2,3,4" are a comma-separated list of user IDs that should have this feature.
      * - where "ROLE_ADMIN,ROLE_PREMIUM" are a comma-separated list of the role names that should have this feature.
+     * - where "caretaker,supporter,staff" are a comma-separated list of the role names that should have this feature.
      *
      * Empty section are allowed and silently ignored as long as the format of the string stays the same:
-     * e.g. "20||ROLE_PREMIUM" is valid (20 percent and additionally al users with ROLE_PREMIUM will get the feature)
-     * e.g. "|||" is valid and will completely disable this feature, but it is recommend to use "0|||" instead.
+     * e.g. "20||ROLE_PREMIUM|" is valid (20 percent and additionally al users with ROLE_PREMIUM will get the feature)
+     * e.g. "||||" is valid and will completely disable this feature, but it is recommend to use "0||||" instead.
      *
      * @param $configString
      * @return bool Successfully parsed the string or not
@@ -58,10 +64,10 @@ abstract class FeatureAbstract implements RolloutableInterface
         if (
             true === is_string($configString)
             && '' !== $configString
-            && 3 === mb_substr_count($configString, self::FEATURE_CONFIGSTRING_SECTION_DELIMITER)
+            && 4 === mb_substr_count($configString, self::FEATURE_CONFIGSTRING_SECTION_DELIMITER)
         ) {
 
-            list($percentageString, $usersString, $rolesString) = explode(
+            list($percentageString, $usersString, $rolesString, $groupsString) = explode(
                 self::FEATURE_CONFIGSTRING_SECTION_DELIMITER,
                 $configString
             );
@@ -86,6 +92,13 @@ abstract class FeatureAbstract implements RolloutableInterface
                 $this->setRoles(array());
             }
 
+            if (true === is_string($groupsString) && '' !== $groupsString) {
+                $groupNames = explode(self::FEATURE_CONFIGSTRING_ENTRY_DELIMITER, $groupsString);
+                $this->setGroups($groupNames);
+            } else {
+                $this->setGroups(array());
+            }
+
             return true;
         } else {
             return false;
@@ -101,6 +114,7 @@ abstract class FeatureAbstract implements RolloutableInterface
         $this->setPercentage(0);
         $this->setUsers(array());
         $this->setRoles(array());
+        $this->setGroups(array());
         return $this;
     }
 
@@ -122,6 +136,7 @@ abstract class FeatureAbstract implements RolloutableInterface
                 true === $this->isUserInPercentage($userId)
                 || true === $this->isUserInActiveUsers($userId)
                 || true === $this->isUserInActiveRole($user, $rollout)
+                || true === $this->isUserInActiveGroup($user, $rollout)
             ) {
                 $isActive = true;
             }
@@ -163,6 +178,21 @@ abstract class FeatureAbstract implements RolloutableInterface
     }
 
     /**
+     * @param DeterminableUserInterface $user
+     * @param RolloutAbstract $rollout
+     * @return bool
+     */
+    protected function isUserInActiveGroup(DeterminableUserInterface $user, RolloutAbstract $rollout)
+    {
+        foreach ($this->getGroups() as $groupName) {
+            if (true === $rollout->userHasGroup($groupName, $user)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * Returns the name of the feature as string. A features name has to be unique!
      * @return string
      */
@@ -196,6 +226,15 @@ abstract class FeatureAbstract implements RolloutableInterface
     public function getRoles()
     {
         return $this->roles;
+    }
+
+    /**
+     * Returns an array of group names that should be enabled for this feature
+     * @return string[]
+     */
+    public function getGroups()
+    {
+        return $this->groups;
     }
 
     /**
@@ -288,6 +327,45 @@ abstract class FeatureAbstract implements RolloutableInterface
     }
 
     /**
+     * Sets the array of group names that should be enabled for this feature
+     * @param string[] $groups
+     * @return RolloutableInterface $this
+     */
+    public function setGroups(array $groups)
+    {
+        $this->groups = $this->checkGroups($groups);
+        return $this;
+    }
+
+    /**
+     * Adds a group to the list of group names that should be enabled for this feature
+     * @param string $groupName
+     * @return RolloutableInterface $this
+     */
+    public function addGroup($groupName)
+    {
+        if (true === is_string($groupName) && false === in_array($groupName, $this->groups)) {
+            $this->groups[] = $groupName;
+        }
+        return $this;
+    }
+
+    /**
+     * Removes a group from the list of group names that should be enabled for this feature
+     * @param string $groupName
+     * @return RolloutableInterface $this
+     */
+    public function removeGroup($groupName)
+    {
+        if (true === is_string($groupName) && true === in_array($groupName, $this->groups)) {
+            foreach (array_keys($this->groups, (string)$groupName, true) as $key) {
+                unset($this->groups[$key]);
+            }
+        }
+        return $this;
+    }
+
+    /**
      * Checks the user IDs and returns only the valid ones
      * @param array $userIds
      * @return array $checkedUserIds
@@ -320,6 +398,22 @@ abstract class FeatureAbstract implements RolloutableInterface
     }
 
     /**
+     * Checks the groups and returns only the valid ones
+     * @param array $groups
+     * @return array $checkedGroups
+     */
+    protected function checkGroups(array $groups)
+    {
+        $checkedGroups = array();
+        foreach ($groups as $group) {
+            if (true === is_string($group) && false === in_array($group, $checkedGroups)) {
+                $checkedGroups[] = (string)$group;
+            }
+        }
+        return $checkedGroups;
+    }
+
+    /**
      * @return string
      */
     public function __toString()
@@ -330,6 +424,8 @@ abstract class FeatureAbstract implements RolloutableInterface
             . implode(self::FEATURE_CONFIGSTRING_ENTRY_DELIMITER, $this->getUsers())
             . self::FEATURE_CONFIGSTRING_SECTION_DELIMITER
             . implode(self::FEATURE_CONFIGSTRING_ENTRY_DELIMITER, $this->getRoles())
+            . self::FEATURE_CONFIGSTRING_SECTION_DELIMITER
+            . implode(self::FEATURE_CONFIGSTRING_ENTRY_DELIMITER, $this->getGroups())
         ;
     }
 

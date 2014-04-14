@@ -59,6 +59,12 @@ interface RolloutableInterface {
     public function getRoles();
 
     /**
+     * Returns an array of group names that should be enabled for this feature
+     * @return string[]
+     */
+    public function getGroups();
+
+    /**
      * Set the percentage of users that should be enabled
      * @param $integer
      * @return RolloutableInterface $this
@@ -106,6 +112,27 @@ interface RolloutableInterface {
      * @return RolloutableInterface $this
      */
     public function removeRole($roleName);
+
+    /**
+     * Sets the array of group names that should be enabled for this feature
+     * @param string[] $groups
+     * @return RolloutableInterface $this
+     */
+    public function setGroups(array $groups);
+
+    /**
+     * Adds a group to the list of group names that should be enabled for this feature
+     * @param string $groupName
+     * @return RolloutableInterface $this
+     */
+    public function addGroup($groupName);
+
+    /**
+     * Removes a group from the list of group names that should be enabled for this feature
+     * @param string $groupName
+     * @return RolloutableInterface $this
+     */
+    public function removeGroup($groupName);
 
     /**
      * Resets the feature config

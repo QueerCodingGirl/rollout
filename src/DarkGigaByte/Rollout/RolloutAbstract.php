@@ -130,6 +130,30 @@ abstract class RolloutAbstract
     }
 
     /**
+     * Activates a feature for a specific group
+     * @param $featureName
+     * @param $groupName
+     */
+    public function activateGroup($featureName, $groupName)
+    {
+        $feature = $this->getFeature($featureName);
+        $feature->addGroup($groupName);
+        $this->saveFeature($feature);
+    }
+
+    /**
+     * Deactivates a feature for a specific group.
+     * @param $featureName
+     * @param $groupName
+     */
+    public function deactivateGroup($featureName, $groupName)
+    {
+        $feature = $this->getFeature($featureName);
+        $feature->removeGroup($groupName);
+        $this->saveFeature($feature);
+    }
+
+    /**
      * Activates a feature for a specific user
      * @param $featureName
      * @param $userId
@@ -201,6 +225,21 @@ abstract class RolloutAbstract
             $userHasRole = true;
         }
         return $userHasRole;
+    }
+
+    /**
+     * Checks if a user has the given group
+     * @param $groupName
+     * @param DeterminableUserInterface $user
+     * @return bool
+     */
+    public function userHasGroup($groupName, DeterminableUserInterface $user)
+    {
+        $userHasGroup = false;
+        if (true === in_array($groupName, $user->getGroups())) {
+            $userHasGroup = true;
+        }
+        return $userHasGroup;
     }
 
 } 

@@ -19,4 +19,10 @@ interface DeterminableUserInterface {
      * @return string[]
      */
     public function getRoles();
+
+    /**
+     * Returns an array of Groups (strings)
+     * @return string[]
+     */
+    public function getGroups();
 } 
