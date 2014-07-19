@@ -1,3 +1,5 @@
+inherit: true
+
 filter:
   excluded_paths: [vendor/*, tests/*]
 
@@ -8,6 +10,8 @@ tools:
   # PHP Code Coverage
   php_code_coverage:
     enabled: true
+    config_path: phpunit.xml
+    test_command: phpunit --colors --verbose
 
   # PHP Code Sniffer
   php_code_sniffer:
