@@ -8,10 +8,9 @@ before_commands:
 
 tools:
   # PHP Code Coverage
-  php_code_coverage:
+  external_code_coverage:
     enabled: true
-    config_path: phpunit.xml
-    test_command: phpunit --colors --verbose
+    timeout: 600    # Timeout in seconds.
 
   # PHP Code Sniffer
   php_code_sniffer:
