@@ -54,7 +54,7 @@ abstract class FeatureAbstract implements RolloutableInterface
      *
      * Empty section are allowed and silently ignored as long as the format of the string stays the same:
      * e.g. "20||ROLE_PREMIUM|" is valid (20 percent and additionally al users with ROLE_PREMIUM will get the feature)
-     * e.g. "||||" is valid and will completely disable this feature, but it is recommend to use "0||||" instead.
+     * e.g. "|||" is valid and will completely disable this feature, but it is recommend to use "0|||" instead.
      *
      * @param string $configString
      * @return bool Successfully parsed the string or not
@@ -63,7 +63,7 @@ abstract class FeatureAbstract implements RolloutableInterface
     {
         if (true === is_string($configString)
             && '' !== $configString
-            && 4 === mb_substr_count($configString, self::FEATURE_CONFIGSTRING_SECTION_DELIMITER)
+            && 3 === mb_substr_count($configString, self::FEATURE_CONFIGSTRING_SECTION_DELIMITER)
         ) {
 
             list($percentageString, $usersString, $rolesString, $groupsString) = explode(
