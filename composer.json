@@ -4,7 +4,7 @@
     "keywords": ["feature", "rollout", "flipper"],
     "homepage": "https://github.com/DarkGigaByte/rollout",
     "autoload": {
-        "psr-0": { "DarkGigaByte\\rollout": "src/" }
+        "psr-0": { "": "src/" }
     },
     "require": {
         "php": ">=5.3"
