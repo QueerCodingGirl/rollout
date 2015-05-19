@@ -24,24 +24,24 @@ class FeatureConfigureByConfigStringTest extends \PHPUnit_Framework_TestCase {
             ->getMock();
 
         if (true === $returnValue) {
-            $feature->expects($this->once())
-               ->method('setPercentage')
-               ->with($this->equalTo($percentage))
-               ->will($this->returnValue($feature));
+            $feature->expects($this->atLeastOnce())
+                ->method('setPercentage')
+                ->with($this->logicalOr($this->equalTo(0), $this->equalTo($percentage)))
+                ->will($this->returnValue($feature));
 
-            $feature->expects($this->once())
+            $feature->expects($this->atLeastOnce())
                ->method('setUsers')
-               ->with($this->equalTo($users))
+               ->with($this->logicalOr($this->equalTo(array()), $this->equalTo($users)))
                ->will($this->returnValue($feature));
 
-            $feature->expects($this->once())
+            $feature->expects($this->atLeastOnce())
                ->method('setRoles')
-               ->with($this->equalTo($roles))
+               ->with($this->logicalOr($this->equalTo(array()), $this->equalTo($roles)))
                ->will($this->returnValue($feature));
 
-            $feature->expects($this->once())
+            $feature->expects($this->atLeastOnce())
                ->method('setGroups')
-               ->with($this->equalTo($groups))
+               ->with($this->logicalOr($this->equalTo(array()), $this->equalTo($groups)))
                ->will($this->returnValue($feature));
         }
 
