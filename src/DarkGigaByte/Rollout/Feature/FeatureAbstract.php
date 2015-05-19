@@ -57,10 +57,12 @@ abstract class FeatureAbstract implements RolloutableInterface
      * e.g. "|||" is valid and will completely disable this feature, but it is recommend to use "0|||" instead.
      *
      * @param string $configString
-     * @return bool Successfully parsed the string or not
+     * @return bool Successfully parsed the config string or not
      */
     public function configureByConfigString($configString)
     {
+        $successsfullyConfigured = false;
+        
         if (true === is_string($configString)
             && '' !== $configString
             && 3 === mb_substr_count($configString, self::FEATURE_CONFIGSTRING_SECTION_DELIMITER)
@@ -70,38 +72,34 @@ abstract class FeatureAbstract implements RolloutableInterface
                 self::FEATURE_CONFIGSTRING_SECTION_DELIMITER,
                 $configString
             );
-
+            
+            $this->setPercentage((integer) 0);
             if (true === is_numeric($percentageString)) {
                 $this->setPercentage((integer) $percentageString);
-            } else {
-                $this->setPercentage((integer) 0);
             }
 
+            $this->setUsers(array());
             if (true === is_string($usersString) && '' !== $usersString) {
                 $userIds = explode(self::FEATURE_CONFIGSTRING_ENTRY_DELIMITER, $usersString);
                 $this->setUsers($userIds);
-            } else {
-                $this->setUsers(array());
             }
 
+            $this->setRoles(array());
             if (true === is_string($rolesString) && '' !== $rolesString) {
                 $roleNames = explode(self::FEATURE_CONFIGSTRING_ENTRY_DELIMITER, $rolesString);
                 $this->setRoles($roleNames);
-            } else {
-                $this->setRoles(array());
             }
 
+            $this->setGroups(array());
             if (true === is_string($groupsString) && '' !== $groupsString) {
                 $groupNames = explode(self::FEATURE_CONFIGSTRING_ENTRY_DELIMITER, $groupsString);
                 $this->setGroups($groupNames);
-            } else {
-                $this->setGroups(array());
             }
 
-            return true;
-        } else {
-            return false;
+            $successsfullyConfigured = true;
         }
+        
+        return $successsfullyConfigured;
     }
 
     /**
@@ -126,30 +124,33 @@ abstract class FeatureAbstract implements RolloutableInterface
      */
     public function isActive(RolloutAbstract $rollout, DeterminableUserInterface $user = null)
     {
-        $isActive = false;
-
+        
+        if (100 === $this->getPercentage()) {
+            return true;
+        }
+        
+        $userId = null;
         if ($user instanceof DeterminableUserInterface) {
             $userId = $user->getId();
-        } else {
-            $userId = null;
         }
-
-        if (100 === $this->getPercentage()) {
-            $isActive = true;
-        } elseif (true === is_numeric($userId)) {
+        
+        if (true === is_numeric($userId)) {
+            
             if (true === $this->isUserInPercentage($userId)
                 || true === $this->isUserInActiveUsers($userId)
             ) {
-                $isActive = true;
-            } elseif ($user instanceof DeterminableUserInterface) {
-                if (true === $this->isUserInActiveRole($user, $rollout)
-                    || true === $this->isUserInActiveGroup($user, $rollout)
-                ) {
-                    $isActive = true;
-                }
+                return true;
+            }
+            
+            if ($user instanceof DeterminableUserInterface
+                && (true === $this->isUserInActiveRole($user, $rollout)
+                    || true === $this->isUserInActiveGroup($user, $rollout))
+            ) {
+                return true;
             }
         }
-        return $isActive;
+        
+        return false;
     }
 
     /**
