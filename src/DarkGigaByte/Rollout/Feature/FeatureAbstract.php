@@ -129,7 +129,7 @@ abstract class FeatureAbstract implements RolloutableInterface
             return true;
         }
         
-        if ($user instanceof DeterminableUserInterface) {
+        if (!$user instanceof DeterminableUserInterface) {
             return false;
         }
         
