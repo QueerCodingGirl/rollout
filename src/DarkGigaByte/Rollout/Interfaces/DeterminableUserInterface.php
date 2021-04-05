@@ -1,10 +1,10 @@
 <?php
 
-namespace DarkGigaByte\Rollout\Interfaces;
+namespace QueerCodingGirl\Rollout\Interfaces;
 
 /**
  * Interface DeterminableUserInterface
- * @package DarkGigaByte\Rollout\Interfaces
+ * @package QueerCodingGirl\Rollout\Interfaces
  */
 interface DeterminableUserInterface
 {

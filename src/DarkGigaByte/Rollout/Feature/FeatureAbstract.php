@@ -1,15 +1,15 @@
 <?php
 
-namespace DarkGigaByte\Rollout\Feature;
+namespace QueerCodingGirl\Rollout\Feature;
 
 
-use DarkGigaByte\Rollout\Interfaces\RolloutableInterface;
-use DarkGigaByte\Rollout\RolloutAbstract;
-use DarkGigaByte\Rollout\Interfaces\DeterminableUserInterface;
+use QueerCodingGirl\Rollout\Interfaces\RolloutableInterface;
+use QueerCodingGirl\Rollout\RolloutAbstract;
+use QueerCodingGirl\Rollout\Interfaces\DeterminableUserInterface;
 
 /**
  * Class FeatureAbstract
- * @package DarkGigaByte\Rollout\Feature
+ * @package QueerCodingGirl\Rollout\Feature
  */
 abstract class FeatureAbstract implements RolloutableInterface
 {

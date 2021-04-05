@@ -1,16 +1,16 @@
 <?php
 
-namespace DarkGigaByte\Rollout;
+namespace QueerCodingGirl\Rollout;
 
 
-use DarkGigaByte\Rollout\Feature\FeatureFactoryAbstract;
-use DarkGigaByte\Rollout\Interfaces\DeterminableUserInterface;
-use DarkGigaByte\Rollout\Interfaces\KeyValueStorageInterface;
-use DarkGigaByte\Rollout\Interfaces\RolloutableInterface;
+use QueerCodingGirl\Rollout\Feature\FeatureFactoryAbstract;
+use QueerCodingGirl\Rollout\Interfaces\DeterminableUserInterface;
+use QueerCodingGirl\Rollout\Interfaces\KeyValueStorageInterface;
+use QueerCodingGirl\Rollout\Interfaces\RolloutableInterface;
 
 /**
  * Class RolloutAbstract
- * @package DarkGigaByte\Rollout
+ * @package QueerCodingGirl\Rollout
  */
 abstract class RolloutAbstract
 {

@@ -3,11 +3,11 @@
 class RolloutDeactivatePercentageTest extends \PHPUnit_Framework_TestCase {
 
     /**
-     * @covers DarkGigaByte\Rollout\RolloutAbstract::deactivatePercentage
+     * @covers QueerCodingGirl\Rollout\RolloutAbstract::deactivatePercentage
      */
     public function testDeactivatePercentage()
     {
-        $feature = $this->getMockBuilder('\DarkGigaByte\Rollout\Feature\CoreFeature')
+        $feature = $this->getMockBuilder('\QueerCodingGirl\Rollout\Feature\CoreFeature')
             ->disableOriginalConstructor()
             ->setMethods(array('setPercentage'))
             ->getMock();
@@ -16,7 +16,7 @@ class RolloutDeactivatePercentageTest extends \PHPUnit_Framework_TestCase {
             ->method('setPercentage')
             ->with($this->equalTo(0));
 
-        $rollout = $this->getMockBuilder('\DarkGigaByte\Rollout\Rollout')
+        $rollout = $this->getMockBuilder('\QueerCodingGirl\Rollout\Rollout')
             ->disableOriginalConstructor()
             ->setMethods(array('getFeature', 'saveFeature'))
             ->getMock();

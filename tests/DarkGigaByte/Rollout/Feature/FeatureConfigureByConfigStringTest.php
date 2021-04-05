@@ -8,7 +8,7 @@ class FeatureConfigureByConfigStringTest extends \PHPUnit_Framework_TestCase {
 
     /**
      * @dataProvider configureByConfigStringProvider
-     * @covers DarkGigaByte\Rollout\Feature\FeatureAbstract::configureByConfigString()
+     * @covers QueerCodingGirl\Rollout\Feature\FeatureAbstract::configureByConfigString()
      */
     public function testConfigureByConfigStringTest(
         $configString,
@@ -18,7 +18,7 @@ class FeatureConfigureByConfigStringTest extends \PHPUnit_Framework_TestCase {
         array $groups,
         $returnValue
     ) {
-        $feature = $this->getMockBuilder('\DarkGigaByte\Rollout\Feature\CoreFeature')
+        $feature = $this->getMockBuilder('\QueerCodingGirl\Rollout\Feature\CoreFeature')
             ->disableOriginalConstructor()
             ->setMethods(array('setPercentage', 'setUsers', 'setRoles', 'setGroups'))
             ->getMock();

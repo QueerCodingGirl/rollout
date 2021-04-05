@@ -5,11 +5,11 @@ class RolloutActivatePercentageTest extends \PHPUnit_Framework_TestCase {
 
     /**
      * @dataProvider activatePercentageProvider
-     * @covers DarkGigaByte\Rollout\RolloutAbstract::activatePercentage
+     * @covers QueerCodingGirl\Rollout\RolloutAbstract::activatePercentage
      */
     public function testActivatePercentage($percentage)
     {
-        $feature = $this->getMockBuilder('\DarkGigaByte\Rollout\Feature\CoreFeature')
+        $feature = $this->getMockBuilder('\QueerCodingGirl\Rollout\Feature\CoreFeature')
             ->disableOriginalConstructor()
             ->setMethods(array('setPercentage'))
             ->getMock();
@@ -18,7 +18,7 @@ class RolloutActivatePercentageTest extends \PHPUnit_Framework_TestCase {
             ->method('setPercentage')
             ->with($this->equalTo($percentage));
 
-        $rollout = $this->getMockBuilder('\DarkGigaByte\Rollout\Rollout')
+        $rollout = $this->getMockBuilder('\QueerCodingGirl\Rollout\Rollout')
             ->disableOriginalConstructor()
             ->setMethods(array('getFeature', 'saveFeature'))
             ->getMock();

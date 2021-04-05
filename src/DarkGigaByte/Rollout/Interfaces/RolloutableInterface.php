@@ -1,12 +1,12 @@
 <?php
 
-namespace DarkGigaByte\Rollout\Interfaces;
+namespace QueerCodingGirl\Rollout\Interfaces;
 
-use DarkGigaByte\Rollout\RolloutAbstract;
+use QueerCodingGirl\Rollout\RolloutAbstract;
 
 /**
  * Interface RolloutableInterface
- * @package DarkGigaByte\Rollout\Interfaces
+ * @package QueerCodingGirl\Rollout\Interfaces
  */
 interface RolloutableInterface
 {

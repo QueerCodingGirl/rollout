@@ -8,7 +8,7 @@ class FeatureIsActiveTest extends \PHPUnit_Framework_TestCase {
 
     /**
      * @dataProvider isActiveProvider
-     * @covers DarkGigaByte\Rollout\Feature\FeatureAbstract::isActive()
+     * @covers QueerCodingGirl\Rollout\Feature\FeatureAbstract::isActive()
      */
     public function testIsActiveTest(
         $userId,
@@ -20,19 +20,19 @@ class FeatureIsActiveTest extends \PHPUnit_Framework_TestCase {
         $returnValue
     ) {
 
-        $rollout = $this->getMockBuilder('\DarkGigaByte\Rollout\Rollout')
+        $rollout = $this->getMockBuilder('\QueerCodingGirl\Rollout\Rollout')
             ->disableOriginalConstructor()
             ->setMethods(array('userHasRole', 'userHasGroup'))
             ->getMock();
 
         $user = $this->getMock(
-            'DarkGigaByte\Rollout\Interfaces\DeterminableUserInterface',
+            'QueerCodingGirl\Rollout\Interfaces\DeterminableUserInterface',
             array('getId', 'getRoles', 'getGroups')
         );
         $user->expects($this->any())->method('getId')->willReturn($userId);
 
 
-        $feature = $this->getMockBuilder('\DarkGigaByte\Rollout\Feature\CoreFeature')
+        $feature = $this->getMockBuilder('\QueerCodingGirl\Rollout\Feature\CoreFeature')
             ->disableOriginalConstructor()
             ->setMethods(
                 array(

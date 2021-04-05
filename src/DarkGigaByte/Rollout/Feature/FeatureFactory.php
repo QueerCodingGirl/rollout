@@ -1,13 +1,13 @@
 <?php
 
-namespace DarkGigaByte\Rollout\Feature;
+namespace QueerCodingGirl\Rollout\Feature;
 
 
-use DarkGigaByte\Rollout\Interfaces\RolloutableInterface;
+use QueerCodingGirl\Rollout\Interfaces\RolloutableInterface;
 
 /**
  * Class FeatureFactory
- * @package DarkGigaByte\Rollout\Feature
+ * @package QueerCodingGirl\Rollout\Feature
  */
 class FeatureFactory extends FeatureFactoryAbstract
 {

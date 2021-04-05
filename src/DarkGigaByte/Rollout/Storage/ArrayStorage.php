@@ -1,13 +1,13 @@
 <?php
 
-namespace DarkGigaByte\Rollout\Storage;
+namespace QueerCodingGirl\Rollout\Storage;
 
 
-use DarkGigaByte\Rollout\Interfaces\KeyValueStorageInterface;
+use QueerCodingGirl\Rollout\Interfaces\KeyValueStorageInterface;
 
 /**
  * Class ArrayStorage
- * @package DarkGigaByte\Rollout\Storage
+ * @package QueerCodingGirl\Rollout\Storage
  */
 class ArrayStorage implements KeyValueStorageInterface
 {

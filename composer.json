@@ -1,8 +1,8 @@
 {
-    "name": "darkgigabyte/rollout",
+    "name": "queercodinggirl/rollout",
     "description": "A php implementation of the ruby feature flipper originally from jamesgolick/rollout (now fetlife/rollout)",
     "keywords": ["feature", "rollout", "flipper"],
-    "homepage": "https://github.com/DarkGigaByte/rollout",
+    "homepage": "https://github.com/QueerCodingGirl/rollout",
     "autoload": {
         "psr-0": { "": "src/" }
     },
@@ -15,9 +15,9 @@
     "license": "Apache-2.0",
     "authors": [
         {
-            "name": "Pascal Schneider",
-            "email": "darkgigabyte@googlemail.com",
-            "homepage": "https://github.com/DarkGigaByte",
+            "name": "Lena Schneider",
+            "email": "queercodinggirl@queercode.io",
+            "homepage": "https://github.com/QueerCodingGirl",
             "role": "developer"
         }
     ]

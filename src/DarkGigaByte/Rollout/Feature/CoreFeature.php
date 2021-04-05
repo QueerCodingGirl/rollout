@@ -1,10 +1,10 @@
 <?php
 
-namespace DarkGigaByte\Rollout\Feature;
+namespace QueerCodingGirl\Rollout\Feature;
 
 /**
  * Class CoreFeature
- * @package DarkGigaByte\Rollout\Feature
+ * @package QueerCodingGirl\Rollout\Feature
  */
 class CoreFeature extends FeatureAbstract
 {

@@ -3,11 +3,11 @@
 class RolloutDeactivateTest extends \PHPUnit_Framework_TestCase {
 
     /**
-     * @covers DarkGigaByte\Rollout\RolloutAbstract::deactivate
+     * @covers QueerCodingGirl\Rollout\RolloutAbstract::deactivate
      */
     public function testDeactivate()
     {
-        $feature = $this->getMockBuilder('\DarkGigaByte\Rollout\Feature\CoreFeature')
+        $feature = $this->getMockBuilder('\QueerCodingGirl\Rollout\Feature\CoreFeature')
             ->disableOriginalConstructor()
             ->setMethods(array('clearConfig'))
             ->getMock();
@@ -16,7 +16,7 @@ class RolloutDeactivateTest extends \PHPUnit_Framework_TestCase {
             ->method('clearConfig')
             ->will($this->returnValue($feature));
 
-        $rollout = $this->getMockBuilder('\DarkGigaByte\Rollout\Rollout')
+        $rollout = $this->getMockBuilder('\QueerCodingGirl\Rollout\Rollout')
             ->disableOriginalConstructor()
             ->setMethods(array('getFeature', 'saveFeature'))
             ->getMock();
